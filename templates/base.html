@@ -5,17 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #navbar {
+            background-color: rgb(115, 151, 236);
+            padding: 12px;
+        }
+
+        .username {
+            color: aquamarine;
+        }
+
+        .button {
+            background-color: blanchedalmond;
+            padding: 6px;
+            width: 100px;
+            text-decoration: none;
+            border-radius: 3px;
+            margin-left: 12px;
+        }
+    </style>
 </head>
 
 <body>
-    {% if user.is_authenticated %}
-    使用者:{{user.username}}
-    <a href="{% url 'logout' %}">登出</a>
-    {% else %}
-    <a href="{% url 'login' %}">登入</a>
-    <a href="{% url 'register' %}">註冊</a>
-    {% endif %}
+    <div id="navbar">
+        {% if user.is_authenticated %}
+        使用者: <span class="username">{{user.username}}</span>
 
+        <a class="button" href="{% url 'logout' %}">登出</a>
+        {% else %}
+        <a class="button" href="{% url 'login' %}">登入</a>
+        <a class="button" href="{% url 'register' %}">註冊</a>
+        {% endif %}
+    </div>
     {% block content %}
 
     {% endblock %}
