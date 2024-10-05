@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block style %}
 
@@ -14,21 +14,21 @@
 
         .title {
             font-size: 24px;
-            margin: 60px 0;
+            margin: 6px 0;
         }
 
         .text {
             height: 100px;
-            text-align: left;
+            text-align: center;
             padding: 12px;
-            background-color: aquamarine;
+            background-color: rgb(229, 229, 229);
             margin: 12px;
+            border-radius: 3px;
         }
 
         .imp {
             text-align: right;
-            margin: 2px;
-
+            margin: 1px 12px;
         }
 
         .created {
@@ -37,8 +37,8 @@
             margin: 6px;
         }
     </style>
-</head>
 
+</head>
 
 {% endblock %}
 
@@ -50,17 +50,18 @@
 {% for todo in todos %}
 <div class="todo">
     <div class="created">{{todo.created}}</div>
-    <div class="title">{{todo.title}}</div>
-    <div class="text"> {{todo.text}}</div>
+    <div class="title">
+        <a href="{% url 'todo' todo.id %}">{{todo.title}}</a>
+    </div>
+    <div class="text">{{todo.text}}</div>
     <div class="imp">
         {% if todo.important %}
-        <span style="color:red">重要</span>
+        <span style="color:red">*重要</span>
         {% else %}
         <span style="color:blue">一般</span>
         {% endif %}
     </div>
 </div>
-
 {% endfor %}
 
 {% endblock %}
