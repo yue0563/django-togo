@@ -1,15 +1,65 @@
 {% extends 'base.html' %}
 
+{% block style %}
+
+<head>
+    <style>
+        .todo {
+            display: inline-block;
+            width: 300px;
+            background-color: white;
+            margin: 12px;
+            border-radius: 6px;
+        }
+
+        .title {
+            font-size: 24px;
+            margin: 60px 0;
+        }
+
+        .text {
+            height: 100px;
+            text-align: left;
+            padding: 12px;
+            background-color: aquamarine;
+            margin: 12px;
+        }
+
+        .imp {
+            text-align: right;
+            margin: 2px;
+
+        }
+
+        .created {
+            font-size: small;
+            text-align: left;
+            margin: 6px;
+        }
+    </style>
+</head>
+
+
+{% endblock %}
+
+
 {% block content %}
 <h1>Todolist</h1>
 
 
 {% for todo in todos %}
-
-<h2>{{todos.title}}</h2>
-<li>{{todos.text}}</li>
-<li>{{todos.created}}</li>
-<li>{{todos.important}}</li>
+<div class="todo">
+    <div class="created">{{todo.created}}</div>
+    <div class="title">{{todo.title}}</div>
+    <div class="text"> {{todo.text}}</div>
+    <div class="imp">
+        {% if todo.important %}
+        <span style="color:red">重要</span>
+        {% else %}
+        <span style="color:blue">一般</span>
+        {% endif %}
+    </div>
+</div>
 
 {% endfor %}
 

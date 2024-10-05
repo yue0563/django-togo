@@ -9,5 +9,4 @@ def todolist(request):
     if user.is_authenticated:
         todos = Todo.objects.filter(user=user)
 
-    print(todos)
-    return render(request, "todo/todolist.html", {"todo": todos})
+    return render(request, "todo/todolist.html", {"todos": todos})
