@@ -10,6 +10,10 @@ class Todo(models.Model):
     date_completed = models.DateTimeField(blank=True, null=True)
     important = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    completed = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["-created"]
 
     def __str__(self):
         return f"{self.id}-{self.title}-{self.created}"

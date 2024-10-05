@@ -55,10 +55,10 @@
     </div>
     <div class="text">{{todo.text|linebreaksbr}}</div>
     <div class="imp">
-        {% if todo.important %}
-        <span style="color:red">*重要</span>
+        {% if todo.date_competed %}
+        <span style="color:blue">已完成{{todo.date_competed}}</span>
         {% else %}
-        <span style="color:blue">一般</span>
+        進行中
         {% endif %}
     </div>
 </div>
